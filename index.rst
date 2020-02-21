@@ -46,7 +46,6 @@
   tools_vms/windows_tools_vm
   tools_vms/linux_tools_vm
   appendix/glossary
-  appendix/basics
 
 .. _getting_started:
 
