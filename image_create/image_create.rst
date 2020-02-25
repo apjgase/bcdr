@@ -52,11 +52,12 @@ Converting a Windows VM Disk files into QCOW2 format
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #. SSH to the CVM and login as “Nutanix” user.
+
 #. For Windows VM to convert the virtual disk file to qcow2 format using the qemu-img command from the CVM command line:
 
    .. code-block:: bash
 
-      qemu-img convert -f raw nfs://127.0.0.1/Default/.acropolis/vmdisk/aeb97226-d6fc-47af-b23c-7171ed887f94 -O qcow2 nfs://127.0.0.1/Images/Win10v1903.qcow2
+      qemu-img convert -f raw nfs://127.0.0.1/<container_name>/.acropolis/vmdisk/<vdisk-uuid> -O qcow2 nfs://127.0.0.1/Images/*Initials*-WindowsVM.qcow2
 
 #. From the Prism GUI, create the VM and set the criteria for Type (Disk) and Operation (Clone from Image Service) and select your disk. Assign a network adapter (NIC).
 
@@ -77,7 +78,7 @@ Converting a Linux VM Disk files into QCOW2 format
 
    .. code-block:: bash
 
-      qemu-img convert -f raw -c nfs://127.0.0.1/Default/.acropolis/vmdisk/aeb97226-d6fc-47af-b23c-7171ed887f94 -O qcow2 nfs://127.0.0.1/Images/Win10v1903.qcow2
+      qemu-img convert -f raw -c nfs://127.0.0.1/<container_name>/.acropolis/vmdisk/<vdisk-uuid> -O qcow2 nfs://127.0.0.1/Images/*Initials*-CentOS7.qcow2
 
 #. From the Prism GUI, create the VM and set the criteria for Type (Disk) and Operation (Clone from Image Service) and select your disk. Assign a network adapter (NIC).
 
