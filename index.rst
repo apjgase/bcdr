@@ -22,14 +22,6 @@
 
 .. toctree::
   :maxdepth: 2
-  :caption: Security Compliance
-  :name: _security_compliance
-  :hidden:
-
-  lab_stig/lab_stig
-
-.. toctree::
-  :maxdepth: 2
   :caption: Optional Labs
   :name: _optional_labs
   :hidden:
@@ -75,7 +67,6 @@ Agenda
 - Nutanix Presentation
 - Nutanix Configuration Labs
 - Deploying and Managing Workloads Labs
-- Security Compliance Labs
 
 Introductions
 +++++++++++++
