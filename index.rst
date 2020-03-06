@@ -111,6 +111,7 @@ Throughout the Workshop there are multiple instances where you will need to subs
 .. list-table::
    :widths: 25 75
    :header-rows: 1
+   
    * - IP Address
      - Description
    * - 10.21.\ *XYZ*\ .37
@@ -125,6 +126,7 @@ Each cluster is configured with 2 VLANs which can be used for VMs:
 .. list-table::
   :widths: 25 25 10 40
   :header-rows: 1
+
   * - Network Name
     - Address
     - VLAN
@@ -148,6 +150,7 @@ Credentials
 .. list-table::
    :widths: 25 35 40
    :header-rows: 1
+
    * - Credential
      - Username
      - Password
@@ -169,6 +172,7 @@ Each cluster has a dedicated domain controller VM, **DC**, responsible for provi
 .. list-table::
    :widths: 25 35 40
    :header-rows: 1
+
    * - Group
      - Username(s)
      - Password
