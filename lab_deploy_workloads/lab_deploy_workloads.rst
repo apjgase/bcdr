@@ -54,7 +54,7 @@ Nutanix validates and distributes these drivers via http://portal.nutanix.com. T
    - **Memory** - 4 GiB
    - Select :fa:`pencil` next to CDROM
        - **Operation** - Clone from Image Service
-       - **Image** - Windows2012R2.ISO
+       - **Image** - Windows2016.ISO
        - Select **Update**
 
        *This will mount the Windows Server ISO from the Image Service for boot/installation*
