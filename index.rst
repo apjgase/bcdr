@@ -26,8 +26,8 @@
   :name: _optional_labs
   :hidden:
 
-  image_create/image_create
-  .. lab_image_configuration/lab_image_configuration
+..  image_create/image_create
+.. lab_image_configuration/lab_image_configuration
 
 .. toctree::
   :maxdepth: 2
@@ -111,7 +111,7 @@ Throughout the Workshop there are multiple instances where you will need to subs
 .. list-table::
    :widths: 25 75
    :header-rows: 1
-   
+
    * - IP Address
      - Description
    * - 10.21.\ *XYZ*\ .37
