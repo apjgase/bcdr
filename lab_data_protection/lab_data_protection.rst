@@ -21,7 +21,7 @@ VM Snapshots
 
 #. If the VM is powered on, perform a **Guest Shutdown** power action.
 
-#. Select the VM and click **Snapshot** from the menu below the table.
+#. Select the VM and click **Take Snapshot** from the menu below the table.
 
 #. Provide a name for your snapshot and click **Submit**.
 

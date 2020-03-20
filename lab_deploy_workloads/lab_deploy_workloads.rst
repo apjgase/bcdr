@@ -13,16 +13,8 @@ In addition to storage, VM creation, management, and monitoring can all be perfo
 
    Prism also offers native support for VM CRUD operations for Nutanix clusters running ESXi when the vCenter has been registered in Prism.
 
-In the following exercise we'll walk through creating VMs from source media and from existing disk images.
-
 Deploying Workloads
 +++++++++++++++++++
-
-In addition to storage, VM creation, management, and monitoring can all be performed for Nutanix AHV directly through Prism.
-
-.. note::
-
-   Prism also offers native support for VM CRUD operations for Nutanix clusters running ESXi.
 
 In the following exercise we'll walk through creating VMs from source media and from existing disk images.
 
@@ -92,7 +84,7 @@ Nutanix validates and distributes these drivers via http://portal.nutanix.com. T
 
 #. Select the VM, then click **Power On** from the list of action links (below the table) to turn on the VM.
 
-   .. figure:: images/deploy_workloads_vm_options.png
+   .. figure:: images/vm_power_on.png
 
 #. Select the VM, then click **Launch Console** from the **Actions** drop-down menu to access an HTML5 console to interact with the VM.
 
