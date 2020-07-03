@@ -20,14 +20,16 @@
   lab_manage_workloads/lab_manage_workloads
   lab_data_protection/lab_data_protection
 
-.. toctree::
+.. This will all be hidden from the TOC Removing this line and removing the indent before ".. toctree" will bring this item back
+  .. toctree::
   :maxdepth: 2
   :caption: Optional Labs
   :name: _optional_labs
   :hidden:
+  
+  image_create/image_create
+  lab_image_configuration/lab_image_configuration
 
-..  image_create/image_create
-.. lab_image_configuration/lab_image_configuration
 
 .. toctree::
   :maxdepth: 2
@@ -55,10 +57,7 @@ What's New
 ++++++++++
 
 - Workshop updated for the following software versions:
-    - AOS & PC 5.11.2.x
-
-- Optional Lab Updates:
-
+    - AOS 5.16.x & PC 5.17.x
 
 Agenda
 ++++++
@@ -88,23 +87,19 @@ Nutanix Workshops are intended to be run in the Nutanix Hosted POC environment. 
 Networking
 ..........
 
-Hosted POC clusters follow a standard naming convention:
+POC clusters follow a standard naming convention:
 
-- **Cluster Name** - POC\ *XYZ*
-- **Subnet** - 10.**21**.\ *XYZ*\ .0
-- **Cluster IP** - 10.**21**.\ *XYZ*\ .37
-
-If provisioned from the marketing pool:
-
-- **Cluster Name** - MKT\ *XYZ*
-- **Subnet** - 10.**20**.\ *XYZ*\ .0
-- **Cluster IP** - 10.**20**.\ *XYZ*\ .37
+- **Data Center** - *X*
+- **Cluster Name** - POC\ *Y*
+- **Subnet** - 10.\ *X*\.\ *Y*\ .0
+- **Cluster IP** - 10.\ *X*\.\ *Y*\ .37
 
 For example:
 
+- **Data Center** - Phoenix
 - **Cluster Name** - POC055
-- **Subnet** - 10.21.55.0
-- **Cluster IP** - 10.21.55.37
+- **Subnet** - 10.42.55.0
+- **Cluster IP** - 10.42.55.37
 
 Throughout the Workshop there are multiple instances where you will need to substitute *XYZ* with the correct octet for your subnet, for example:
 
@@ -114,11 +109,11 @@ Throughout the Workshop there are multiple instances where you will need to subs
 
    * - IP Address
      - Description
-   * - 10.21.\ *XYZ*\ .37
+   * - 10.\ *X*\ .\ *Y*\ .37
      - Nutanix Cluster Virtual IP
-   * - 10.21.\ *XYZ*\ .39
+   * - 10.\ *X*\ .\ *Y*\ .39
      - **PC** VM IP, Prism Central
-   * - 10.21.\ *XYZ*\ .40
+   * - 10.\ *X*\ .\ *Y*\ .40
      - **DC** VM IP, NTNXLAB.local Domain Controller
 
 Each cluster is configured with 2 VLANs which can be used for VMs:
@@ -132,13 +127,13 @@ Each cluster is configured with 2 VLANs which can be used for VMs:
     - VLAN
     - DHCP Scope
   * - Primary
-    - 10.21.\ *XYZ*\ .1/25
+    - 10.\ *X*\ .\ *Y*\ .1/25
     - 0
-    - 10.21.\ *XYZ*\ .50-10.21.\ *XYZ*\ .124
+    - 10.\ *X*\ .\ *Y*\ .50-10.\ *X*\ .\ *Y*\ .124
   * - Secondary
-    - 10.21.\ *XYZ*\ .129/25
-    - *XYZ1*
-    - 10.21.\ *XYZ*\ .132-10.21.\ *XYZ*\ .253
+    - 10.\ *X*\ .\ *Y*\ .129/25
+    - *Y1* or *Y3*
+    - 10.\ *X*\ .\ *Y*\ .132-10.\ *X*\ .\ *Y*\ .253
 
 Credentials
 ...........
@@ -262,6 +257,6 @@ For RTP:
 Nutanix Version Info
 ++++++++++++++++++++
 
-- **AHV Version** - AHV 20170830.337
-- **AOS Version** - 5.11.2.3
-- **PC Version** - 5.11.2.1
+- **AHV Version** - AHV 20190916.158
+- **AOS Version** - 5.16.1.2
+- **PC Version** - 5.17.0.3
