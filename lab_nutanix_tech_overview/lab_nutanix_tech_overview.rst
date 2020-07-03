@@ -82,7 +82,7 @@ Prism Element UI Review
 
 Where would you locate the version of AOS you are running?
 
-.. figure:: images/nutanix_tech_overview_06_5-11.png
+.. figure:: images/nutanix_tech_overview_06.png
 
 You can do this by clicking on the **User** drop down :fa:`user`, and clicking **About Nutanix**.
 
