@@ -20,14 +20,16 @@
   lab_manage_workloads/lab_manage_workloads
   lab_data_protection/lab_data_protection
 
-.. toctree::
+.. This will all be hidden from the TOC Removing this line and removing the indent before ".. toctree" will bring this item back
+  .. toctree::
   :maxdepth: 2
   :caption: Optional Labs
   :name: _optional_labs
   :hidden:
+  
+  image_create/image_create
+  lab_image_configuration/lab_image_configuration
 
-..  image_create/image_create
-.. lab_image_configuration/lab_image_configuration
 
 .. toctree::
   :maxdepth: 2
@@ -55,10 +57,7 @@ What's New
 ++++++++++
 
 - Workshop updated for the following software versions:
-    - AOS & PC 5.11.2.x
-
-- Optional Lab Updates:
-
+    - AOS 5.16.x & PC 5.17.x
 
 Agenda
 ++++++
