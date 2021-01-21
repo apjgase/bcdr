@@ -106,9 +106,34 @@ Additional information can be found `here <https://nutanixbible.com/#anchor-book
 
 That's it! You've successfully configured native data protection in Prism.
 
-Takeaways
-+++++++++
+ - create snap - dt - planned failover - dt - failback - dt - unplanned failover - dt - failback
 
-- Nutanix offers data protection solutions for virtual datacenters via different strategies including one-to-one or one-to-many replication.
-- Nutanix provides data protection functions at the VM, file, and volume group level, so VMs and data remain safe in a crash-consistent environment.
-- VM-level snapshot and replication policies can be managed through Prism for any supported hypervisor.
+ Log in to your VM and create a text file with a current date and time
+
+right click on protection domain - take snapshot (SH)
+
+select lkocal and remote site - click save (SH)
+
+click replications - scroll down - check last successful or ongoing
+
+once done, login to remote site
+
+top menu - data protection - select your protectio domain
+
+check incoming last successful
+
+match snapshot id - confirm to instructor
+
+(Nutanix instructor to simulate site A failure)
+
+right click on prot domain - select activate (SH)
+
+are you sure - to activate protection domain? - click Yes
+
+check recent tasks status and protection domain details - protection domain mode should be "active" (SH)
+
+top menu - VM  - look for your virtual machine and power it on
+
+log in to VM and check status and file content
+
+add current date-time to a file
