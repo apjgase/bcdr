@@ -58,10 +58,6 @@ Protection Domains
 
 #. In **Prism Element > Data Protection > Table**, click **+ Protection Domain > Async DR** to begin creating a PD.
 
-   .. note::
-
-      Synchronous replication (Metro Availability) is currently support on ESXi. It will be supported in AHV in a future release.
-
 #. When opening the Data Protection context of the menu a warning screen will appear. Click on the **OK** button to move forward.
 
  .. figure:: images/data_protection_01.png
@@ -106,34 +102,135 @@ Additional information can be found `here <https://nutanixbible.com/#anchor-book
 
 That's it! You've successfully configured native data protection in Prism.
 
- - create snap - dt - planned failover - dt - failback - dt - unplanned failover - dt - failback
 
- Log in to your VM and create a text file with a current date and time
+Planned failover
++++++++++++++++
 
-right click on protection domain - take snapshot (SH)
+#. Log in to your VM and create a text file with a current date and time
 
-select lkocal and remote site - click save (SH)
+#. In **Prism Element > Data Protection > Table**, right-click on your protection domain and select **Take snapshot** 
 
-click replications - scroll down - check last successful or ongoing
+    .. figure:: images/takeasnap.png
 
-once done, login to remote site
+#. Select both local and remote sites and click **Save**
+ 
+#. Click replications, scroll down and check last successful or ongoing replication
 
-top menu - data protection - select your protectio domain
+#. Select the target protection domain and click the Migrate action link. The Migrate Protection Domain dialog box appears. Select the site where you want to migrate the protection domain. The VMs that are part of the protection domain, but cannot be recovered on the remote site are also displayed. 
 
-check incoming last successful
+    .. figure:: images/migrate.png
 
-match snapshot id - confirm to instructor
+   .. note::
 
-(Nutanix instructor to simulate site A failure)
+    Migrating a protection domain does the following:
+    Creates and replicates a snapshot of the protection domain.
+    Powers off the VMs on the local site.
+    Note: The data protection service waits for 5 minutes for the VM to shut down. If the VM does not get shutdown within 5 minutes, it is automatically powered off.
+    Creates and replicates another snapshot of the protection domain.
+    Unregisters all VMs and volume groups and removes their associated files.
+    Marks the local site protection domain as inactive.
+    Restores all VM and volume group files from the last snapshot and registers them with the same UUIDs at the remote site.
+    Note: If you are migrating a protection domain to a different hypervisor (for example, ESXi to AHV), all VM and volume group files register with a new UUID at the recovery site.
+    Marks the remote site protection domain as active.
+    
+#. Once migration will be completed, login to remote site
 
-right click on prot domain - select activate (SH)
+#. In **Prism Element > Data Protection > Table**, select your protection domain
 
-are you sure - to activate protection domain? - click Yes
+#. Check incoming transfers -> last successful, match the snapshot ID with primary site
 
-check recent tasks status and protection domain details - protection domain mode should be "active" (SH)
+#. Check protection domain details - protection domain mode should be "active" 
 
-top menu - VM  - look for your virtual machine and power it on
+    .. figure:: images/active.png
 
-log in to VM and check status and file content
+#. Power on your VM at the DR site, login and check your text file. Add one more line with the current date and time
 
-add current date-time to a file
+Performing Failback
+..................
+
+#. Login to the Web console of the DR site (the site where the protection domain is currently active).
+
+#. From the Async DR tab under Data Protection, select the Protection Domain that you want to failback.
+
+#. Click **Migrate**. The Migrate Protection Domain dialog box appears. 
+
+#. Select the site where you want to migrate the Protection Domain. The VMs that are part of the Protection Domain, but cannot be recovered on the remote site are also displayed. 
+
+#. When the field entries are correct, click the **Save** button.
+
+#. Once migration will be completed, login to primary site
+
+#. In **Prism Element > Data Protection > Table**, select your protection domain
+
+#. Check protection domain details - protection domain mode should be "active" 
+
+    .. figure:: images/active.png
+
+#. Power on your VM at the primary site, log in and check your text file. Add one more line with the current date and time.
+
+
+Unplanned failover
++++++++++++++++
+
+#. At the primary site, in **Prism Element > Data Protection > Table**, right-click on your protection domain and select **Take snapshot** 
+
+#. Once transfer would be completed, notify an instructor 
+
+#. Nutanix instructor will simulate site A failure
+
+#. Login to the Web console of the DR site.
+
+#. From the Async DR tab under Data Protection, select the Protection Domain that you want to Activate.
+
+#. Right click on the protection domain - select **Activate**
+
+    .. figure:: images/activate.png
+
+#. Warning message appear: "Are you sure to activate protection domain?" - click **Yes**
+
+#. Check recent tasks status and protection domain details - protection domain mode should be "active"
+
+#. Look for your virtual machine and power it on
+
+#. Log in to VM and check status and file content. Add current date-time to a file
+
+Performing Failback
+..................
+
+#. The following steps would be completed by an instructor
+
+#. Log on the primary site. Start all the hosts of the primary site. Controller VMs get started and the cluster configuration is established again.
+        
+#. All the Protection Domains that were active before the disaster occurred gets recreated in an active state. However, you cannot replicate the Protection Domains to the remote site since the Protection Domains are still active at the remote site.
+
+#. Log on to one of the Controller VMs at the primary site and enter the hidden nCLI command mode by using the following nCLI command.
+    nutanix@cvm:~$ ncli -h true
+
+#. Deactivate and destroy the VMs by using the following hidden nCLI command. Run this command only when the Protection Domain is active on the secondary site because this command deletes the VMs from the primary site.
+    ncli> pd deactivate-and-destroy-vms name=protection_domain_name
+
+#. Caution: Do not use this command for any other workflow. Otherwise, it will delete the VMs and data loss will occur.
+
+#. VMs get deleted from the primary site and the Protection Domain is no longer active on the primary site. Remove the orphaned VMs from the inventory of the primary site.
+
+#. Perform the following steps:
+
+#. Login to the Web console of the DR site (the site where the protection domain is currently active).
+
+#. From the Async DR tab under Data Protection, select the Protection Domain that you want to failback.
+
+#. Click **Migrate**. The Migrate Protection Domain dialog box appears. 
+
+#. Select the site where you want to migrate the Protection Domain. The VMs that are part of the Protection Domain, but cannot be recovered on the remote site are also displayed. 
+
+#. When the field entries are correct, click the Save button.
+
+#. Once migration will be completed, login to primary site
+
+#. In **Prism Element > Data Protection > Table**, select your protection domain
+
+#. Check protection domain details - protection domain mode should be "active" 
+
+    .. figure:: images/active.png
+
+#. Power on your VM at the primary site, log in and check your text file. Add one more line with the current date and time.
